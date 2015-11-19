@@ -42,19 +42,13 @@ describe Article do
 	it "returns a sorted array of results that match" do
 		ihsan = Article.create(
 			title: "ihsan",
-			body: "ihsan",
-			created_at: Time.now,
-			updated_at: Time.now)
+			body: "ihsan")
 		imam = Article.create(
 			title: "imam",
-			body: "imam",
-			created_at: Time.now,
-			updated_at: Time.now)
+			body: "imam")
 		detik = Article.create(
 			title: "detik",
-			body: "detik",
-			created_at: Time.now,
-			updated_at: Time.now)
+			body: "detik")
 
 		expect(Article.by_letter("i")).to eq [ihsan, imam]
 	end
