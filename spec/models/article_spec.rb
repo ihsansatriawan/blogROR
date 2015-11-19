@@ -52,4 +52,18 @@ describe Article do
 
 		expect(Article.by_letter("i")).to eq [ihsan, imam]
 	end
+
+	it "omits results that do not match" do
+		ihsan = Article.create(
+			title: "ihsan",
+			body: "ihsan")
+		imam = Article.create(
+			title: "imam",
+			body: "imam")
+		detik = Article.create(
+			title: "detik",
+			body: "detik")
+
+		expect(Article.by_letter("i")).not_to include detik
+	end
 end
