@@ -2,11 +2,11 @@ require 'rails_helper'
 
 describe Article do
 	it "has a valid factory" do
-		expect(FactoryGirl.build(:article)).to be_valid
+		expect(build(:article)).to be_valid
 	end
 
 	it "is valid with a title and body" do
-		article = Article.new(
+		article = build(:article,
 			title: "This is a title",
 			body: "lorem ipsum")
 
@@ -14,28 +14,28 @@ describe Article do
 	end
 
 	it "is invalid without a title" do
-		article = FactoryGirl.build(:article, title: nil)
+		article = build(:article, title: nil)
 		article.valid?
 
 		expect(article.errors[:title]).not_to include("Title can't be blank")
 	end
 
 	it "is invalid without a body" do
-		article = FactoryGirl.build(:article, body: nil)
+		article = build(:article, body: nil)
 		article.valid?
 
 		expect(article.errors[:title]).not_to include("Body can't be blank")
 	end
 	
 	it "is invalid without a title and a body" do
-		article = FactoryGirl.build(:article, title:nil, body: nil)
+		article = build(:article, title:nil, body: nil)
 		article.valid?
 
 		expect(article.errors[:title]).not_to include("Title can't be blank Body can't be blank")
 	end
 
 	it "returns article full content as a string" do
-		article = FactoryGirl.build(:article,
+		article = build(:article,
 			title: "HijUp",
 			body: "Islamic E-Commerce Indonesia")
 
@@ -44,13 +44,13 @@ describe Article do
 
 	describe "filter title by letter" do
 		before :each do
-			@ihsan = FactoryGirl.create(:article,
+			@ihsan = create(:article,
 				title: "ihsan",
 				body: "ihsan")
-			@imam = FactoryGirl.create(:article,
+			@imam = create(:article,
 				title: "imam",
 				body: "imam")
-			@detik = FactoryGirl.create(:article,
+			@detik = create(:article,
 				title: "detik",
 				body: "detik")
 		end
