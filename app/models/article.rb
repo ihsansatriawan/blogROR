@@ -4,4 +4,8 @@ class Article < ActiveRecord::Base
 	def full_content
 		[title, body].join(' ')
 	end
+
+	def self.by_letter(letter)
+		where("title LIKE ?", "#{letter}%").order(:title)
+	end
 end

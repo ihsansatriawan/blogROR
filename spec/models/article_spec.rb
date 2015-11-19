@@ -38,4 +38,24 @@ describe Article do
 
 		expect(article.full_content).to eq 'HijUp Islamic E-Commerce Indonesia'
 	end
+
+	it "returns a sorted array of results that match" do
+		ihsan = Article.create(
+			title: "ihsan",
+			body: "ihsan",
+			created_at: Time.now,
+			updated_at: Time.now)
+		imam = Article.create(
+			title: "imam",
+			body: "imam",
+			created_at: Time.now,
+			updated_at: Time.now)
+		detik = Article.create(
+			title: "detik",
+			body: "detik",
+			created_at: Time.now,
+			updated_at: Time.now)
+
+		expect(Article.by_letter("i")).to eq [ihsan, imam]
+	end
 end
