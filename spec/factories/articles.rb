@@ -1,6 +1,6 @@
 FactoryGirl.define do
 	factory :article do
-		title "Judul 1"
-		body "Isi judul 1"
+		title { Faker::Lorem.characters(10) }
+		body { Faker::Lorem.paragraph }
 	end
 end
