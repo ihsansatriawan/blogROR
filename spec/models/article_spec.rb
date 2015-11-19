@@ -44,13 +44,13 @@ describe Article do
 
 	describe "filter title by letter" do
 		before :each do
-			@ihsan = Article.create(
+			@ihsan = FactoryGirl.create(:article,
 				title: "ihsan",
 				body: "ihsan")
-			@imam = Article.create(
+			@imam = FactoryGirl.create(:article,
 				title: "imam",
 				body: "imam")
-			@detik = Article.create(
+			@detik = FactoryGirl.create(:article,
 				title: "detik",
 				body: "detik")
 		end
